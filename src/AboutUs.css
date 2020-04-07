@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet');
+
+/* body{
+    background-color: white;
+} */
+.our-names{
+    color: #0F5257;
+    
+    font-family: 'Spartan', sans-serif;
+}
+
+.member-photo {
+    width: 130px;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: -.85em;
+    z-index: 999;
+    border: 7px solid white;
+    
+} 
+.owen-member-photo {
+    width: 130px;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: -.0em;
+    z-index: 999;
+    border: 7px solid white;
+    
+}
+.groupies-au-li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 370px;
+    width: 235px;
+    min-width: 200px;
+    border: 4px solid #C6B9CD ;
+    border-radius: 10px;
+    background-color: white; 
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    margin-left: 0px; 
+    padding: 10px; 
+} 
+.groupies-card {
+    margin-top: 100px;
+    display: flex;
+    
+
+}
+
+.social-icon {
+    display: inline-flex;
+    justify-content: space-evenly;
+    padding: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 24px;
+    color: #0F5257;
+    
+}
+#about-us-container {
+    background-color: #0F5257;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#concert-link:link {
+    background-color: white;
+    border-radius: 25px;
+    padding: 8px 8px 8px 8px;
+        /* border-radius: 25px; */
+        text-decoration: none;
+        color: white;
+        font: white;
+        margin: 5px 10px 10px 10px;
+    }
+#concerts-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0B3142;
+}
+
+.groupies-card .card-img{
+    width: 108%;
+    height: 15rem;
+    border-radius: 10px;
+    margin-top: -8px;
+    margin-bottom: -270px;
+    object-fit: cover;
+   -webkit-clip-path: polygon(0 0, 100% 0, 100% 78%, 0% 95%);
+   clip-path: polygon(0 0, 100% 0, 100% 78%, 0% 95%);
+}
