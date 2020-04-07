@@ -19,7 +19,7 @@
     border: 7px solid white;
     
 } 
-.owen-member-photo {
+/* .owen-member-photo {
     width: 130px;
     height: 155px;
     object-fit: cover;
@@ -27,8 +27,8 @@
     margin-top: -.0em;
     z-index: 999;
     border: 7px solid white;
-    
-}
+     */
+/* } */
 .groupies-au-li {
     display: flex;
     flex-direction: column;
