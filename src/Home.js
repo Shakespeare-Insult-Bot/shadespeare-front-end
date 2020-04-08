@@ -49,7 +49,7 @@ export default class Home extends Component {
         </p>
       </div>
         
-      <Link to='/about-us'>About Us</Link>
+      <Link className="aboutUs" to='/about-us'>About Us</Link>
       </div>
     )
   }

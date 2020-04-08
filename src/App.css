@@ -43,6 +43,17 @@
   filter: drop-shadow(1px 1px 1px black);
 
 }
+.aboutUs {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  text-decoration: none;
+}
+.aboutUs:hover{
+  text-decoration: underline;
+  
+}
+
 
 .response {
   position:relative;
