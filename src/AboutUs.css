@@ -1,0 +1,71 @@
+/* the whole page */
+#about-us-container {
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+}
+
+/* each individual card is wrapped in this */
+.shadespeare-card {
+    display: flex;
+}    
+
+/* each individual card */
+.shadespeare-au-li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    /* height: 370px; */
+    /* min-width: 200px; */
+    /* border: 4px solid #C6B9CD ; */
+    /* border-radius: 10px; */
+    background-color: tan;
+    /* margin-top: 0px; */
+    margin-bottom: 100%;
+    margin-right: 5px;
+    margin-left: 5px; 
+    padding: 10px; 
+} 
+
+.our-names{
+    color: black;
+    font-family: fantasy;
+}
+
+.member-photo {
+    width: 130px;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: -.85em;
+    /* z-index: 999; */
+    /* border: 7px solid white; */
+    
+}
+
+.social-icon {
+    display: inline-flex;
+    justify-content: space-evenly;
+    padding: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 24px;
+    color: #000000;
+    
+}
+
+
+
+/* card background image if we want to use one */
+/* .shadespeare-card .card-img{
+    width: 108%;
+    height: 15rem;
+    border-radius: 10px;
+    margin-top: -8px;
+    margin-bottom: -270px;
+    object-fit: cover;
+   -webkit-clip-path: polygon(0 0, 100% 0, 100% 78%, 0% 95%);
+   clip-path: polygon(0 0, 100% 0, 100% 78%, 0% 95%);
+} */

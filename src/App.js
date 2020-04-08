@@ -5,7 +5,7 @@ import { BrowserRouter as Router,
   Route
 } from 'react-router-dom';
 import Home from './Home.js'
-// import AboutUs from './AboutUs.js'
+import AboutUs from './AboutUs.js'
 
 
 export default class App extends Component {
@@ -14,7 +14,7 @@ export default class App extends Component {
       <Router>
         <div>
         <Route exact path ='/' component={Home}/>
-        {/* <Route exact path ='/about-us' component={AboutUs}/> */}
+        <Route exact path ='/about-us' component={AboutUs}/>
       </div>
         
         
