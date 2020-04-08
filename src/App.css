@@ -12,13 +12,6 @@
   align-items: center;
   font-family: 'Merienda', cursive;
 }
-.response {
-  height: 50px;
-  margin-bottom: 0px;
-  margin-top: -6px;
-  padding: 0px 5px 0px 5px;
-  border: 3px dashed red;
-}
 .shade {
   width: 350px;
 }
@@ -37,6 +30,10 @@
 .buttonField {
   position: relative;
   bottom: 15px
+}
+.buttonField p {
+  text-align: center;
+  width: 50vw;
 }
 .scrollImage {
   width: 200px;
@@ -76,6 +73,14 @@
   position:relative;
   line-height:2em;
   overflow:hidden;
+
+    font-size: 1.3em;
+    height: 50px;
+    margin-bottom: 0px;
+    margin-top: -6px;
+    padding: 0px 5px 0px 5px;
+    border: 3px dashed red;
+  
 }
 .fadingEffect {
   position:absolute;
