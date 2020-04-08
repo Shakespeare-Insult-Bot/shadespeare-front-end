@@ -7,17 +7,20 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
-  
   font-family: 'Merienda', cursive;
-  font-size: 1.2em;
 }
 .response {
   height: 50px;
-  
+  margin-bottom: 0px;
+  margin-top: -3px;
+  padding: 4px;
+  border: 3px dashed red;
+}
+.shade {
+  width: 400px;
 }
 .shadespeare {
-  width: 200px;
+  width: 400px;
 }
 .home-page button {
   background-color: inherit;
@@ -41,5 +44,31 @@
 
 }
 
-
+.response {
+  position:relative;
+  line-height:2em;
+  overflow:hidden;
+}
+.fadingEffect {
+  position:absolute;
+  top:0; bottom:0; right:0;
+  width:100%;
+  background:wheat;
+  animation: show 4s ease-in;
+  animation-fill-mode: forwards;
+}
+@-webkit-keyframes show { /* Chrome, Safari */
+  0% {width:100%}
+  25% {width:75%}
+  50% {width:50%}
+  75% {width:25%;}
+  100% {width:0%;}
+}
+@keyframes show {
+  0% {width:100%}
+  25% {width:75%}
+  50% {width:50%}
+  75% {width: 25%;}
+  100% {width: 0%;}
+}
 
