@@ -1,7 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
 .home-page {
   height: 100vh;
   background-color: wheat;
-  padding: 20px 0 20px 0;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -12,22 +15,28 @@
 .response {
   height: 50px;
   margin-bottom: 0px;
-  margin-top: -3px;
-  padding: 4px;
+  margin-top: -6px;
+  padding: 0px 5px 0px 5px;
   border: 3px dashed red;
 }
 .shade {
-  width: 400px;
+  width: 350px;
 }
 .shadespeare {
-  width: 400px;
+  width: 350px;
+}
+.shadeField {
+  padding-top: 8px;
 }
 .home-page button {
   background-color: inherit;
   border: none;
   user-select: none;
   outline: none;
-  
+}
+.buttonField {
+  position: relative;
+  bottom: 15px
 }
 .scrollImage {
   width: 200px;
@@ -51,7 +60,15 @@
 }
 .aboutUs:hover{
   text-decoration: underline;
-  
+}
+.aboutProject {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  text-decoration: none;
+}
+.aboutProject:hover{
+  text-decoration: underline;
 }
 
 

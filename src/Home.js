@@ -13,8 +13,8 @@ export default class Home extends Component {
   handleClick = async() => {
     try{
 
-      const quoteData = await request.post('https://shadespeare-staging.herokuapp.com/api/v1/tweets')
-      // const quoteData = await request.post('http://localhost:7890/api/v1/tweets')
+      const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
+      
       this.setState({
         response: quoteData.body.tweetText,
         warningBool: false
@@ -25,7 +25,7 @@ export default class Home extends Component {
   }
     
   render() {
-    const opacity = this.state.warningBool ? {opacity: 0} : {opacity: 1}
+    const opacity = this.state.warningBool ? {display: 'none'} : {display: 'inline-block'}
     return (
       <div className="home-page">
 
@@ -49,7 +49,8 @@ export default class Home extends Component {
         </p>
       </div>
         
-      <Link className="aboutUs" to='/about-us'>About Us</Link>
+      <Link className="aboutUs" to='/about-us'>About the Authors</Link>
+      <Link className="aboutProject" to='/about-project'>About Shadespeare</Link>
       </div>
     )
   }
