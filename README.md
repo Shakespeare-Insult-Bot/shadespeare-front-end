@@ -69,3 +69,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+don't worry about mobile!!!!!!
+
+transparent scroll as a border. not as wide as page but as tall. 
+our cards on the scroll
+background color tan
+lighter shade cards
