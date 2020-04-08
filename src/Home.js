@@ -25,12 +25,20 @@ export default class Home extends Component {
   }
     
   render() {
+    const opacity = this.state.warningBool ? {opacity: 0} : {opacity: 1}
     return (
       <div className="home-page">
 
       <div className="shadeField">
-        <img className="shadespeare" src="shadespeare.png" alt="shadespeare" />
-        <h2 className="response">{this.state.response}</h2>
+        <img style={opacity} className="shade" src="shades.png" alt="shadeTop" />
+
+        {this.state.warningBool ? <img className="shadespeare" src="shadespeare.png" alt="shadespeare" /> :
+        <h2 className="response">{this.state.response}
+        <div className="fadingEffect" />
+        </h2>}
+
+        <img style={opacity} className="shade" src="shade-bottom.png" alt="bottom" />
+
       </div>
       
 
@@ -41,7 +49,7 @@ export default class Home extends Component {
         </p>
       </div>
         
-      <Link to='/about-us'>About Us</Link>
+      <Link className="aboutUs" to='/about-us'>About Us</Link>
       </div>
     )
   }

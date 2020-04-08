@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 
-import './AboutUs.css';
+// import './AboutUs.css';
 
 export default class AboutUs extends Component {
     render() {
