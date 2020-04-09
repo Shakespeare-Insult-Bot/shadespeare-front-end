@@ -46,16 +46,19 @@ export default class Home extends Component {
       const lameWord = this.getLame(text)
       const shadeWord = this.getShade(text)
       const helloWord = this.getHello(text)
+      const byeWord = this.getGoodbye(text)
+      const makerWord = this.getMaker(text)
       
       let response
       if (helloWord) response = await this.helloResponse(helloWord)
       if (lameWord) response = await this.lameResponse(lameWord)
       if (shadeWord) response = await this.shadeResponse(shadeWord)
+      if (makerWord) response = await this.makerResponse(makerWord)
       if (name && this.state.nameBool) {
         response = await this.nameResponse(name) 
         this.setState({nameBool: false})
       }
-  
+      if(byeWord) response = await this.byeResponse(byeWord)
       if (!text) response = await this.noInputResponse()
       if (!response) response = await this.noKeywordsResponse()
       this.setState({
@@ -87,7 +90,7 @@ export default class Home extends Component {
   }
   getHello = (text) => {
     if(!text) return
-    const helloMatchRegex = text.match(/(hello|\bhi\b|wassup|\bsup\b|good morning|good day|morning|good evening|\byo\b|\bhey\b)/i)
+    const helloMatchRegex = text.match(/(hello|\bhi\b|wassup|\bsup\b|good morning|good day|morning|good evening|\byo\b|\bhey\b|good morrow)/i)
     if(!helloMatchRegex) return
     return helloMatchRegex[1]
   }
@@ -123,9 +126,31 @@ export default class Home extends Component {
   }
   getLame = (text) => {
     if(!text) return
-    const lameMatchRegex = text.match(/(\blame\b|not smart|not very smart|poopface|stupid|not clever|\bbad\b|whack|lousy|not intelligent|pathetic|weak)/i)
+    const lameMatchRegex = text.match(/(\blame\b|not smart|not very smart|poopface|stupid|not clever|\bbad\b|whack|lousy|not intelligent|pathetic|weak|sucks|suck|dumb)/i)
     if(!lameMatchRegex) return
     return lameMatchRegex[1]
+  }
+  getGoodbye = (text) => {
+    if(!text) return
+    const byeMatchRegex = text.match(/(goodbye|see ya|later|bye|adios|farewell|toodles|adieu|so long)/i)
+    if(!byeMatchRegex) return
+    return byeMatchRegex[1]
+  }
+  byeResponse = async(word) => {
+    const quote = await getQuote()
+    const middle = [' indeed. I\'ll leave thee with this, ', ' ha! You coward ', '? So thee hast had enough, ']
+    const firstLetter = word[0].toUpperCase();
+    return firstLetter + word.slice(1) + chance.pickone(middle) + quote;
+  }
+  getMaker = (text) => {
+    if(!text) return
+    const makerMatchRegex = text.match(/(creators|creator|who made you|makers|maker|devs|developers|inventors|inventor)/i)
+    if(!makerMatchRegex) return
+    return makerMatchRegex[1]
+  }
+  makerResponse = async(word) => {
+    const makerResponses = ['Why the masters of the universe of course. ', 'The gods bestowed life upon me. ', 'Don\'t thee know? World renown authors. ']
+    return chance.pickone(makerResponses) + 'Clicketh the link down beloweth and to thine left.'
   }
   prompt = () => {
     const counter = this.state.promptCounter
