@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import request from 'superagent'
-
 import getQuote from './utils.js'
 const chance = require('chance').Chance();
-
 
 
 
@@ -13,14 +11,14 @@ export default class Home extends Component {
   state = { 
     response: '',
     warningBool: true,
-    text: null,
+    text: '',
     promptCounter: 0
   }
 
   handleClick = async() => {
     try{
 
-      const quoteData = await request.post('https://shadespeare-staging.herokuapp.com/api/v1/tweets')
+      const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
       
       this.setState({
         response: quoteData.body.tweetText,
@@ -37,25 +35,6 @@ export default class Home extends Component {
 
   handleSubmit = async(e) => {
     e.preventDefault()
-
-    const name = this.getName(this.state.text)
-    const response = await this.nameResponse(name) 
-    this.setState({
-      response: response,
-      promptCounter: this.state.promptCounter + 1 })
-    
-  }
-  nameResponse = async(name) => {
-    const quoteData = await request.post('https://shadespeare-staging.herokuapp.com/api/v1/tweets')
-    let quote = quoteData.body.tweetText
-    if(!quote.startsWith('I ') && !quote.startsWith('I\'ll')) {
-      const firstLetter = quote[0].toLowerCase();
-      quote = firstLetter + quote.slice(1);
-    }
-    const start = ['Nice to meeteth thee ', 'The pleasure is mine ', 'What a pleasure '];
-    const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet', ', even so'];
-    console.log('===============chance: ', chance.pickone(start) )
-
     const text = this.state.text
     const name = this.getName(text)
     const lameWord = this.getLame(text)
@@ -69,7 +48,7 @@ export default class Home extends Component {
     if (shadeWord) response = await this.shadeResponse(shadeWord)
 
     if (!response) {
-      const quoteData = await request.post('https://shadespeare-staging.herokuapp.com/api/v1/tweets')
+      const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
       const quote = quoteData.body.tweetText
       const rebuttal = ['Hast thy nothing witty to say? ', 'Is thy quill dry? ', 'Are thine fingers broken? ', 'Hast thou had enough? ', 'Ist thou mute? ']
       //if text is empty reply with mute and dry quill, save others for text but no found response
@@ -106,32 +85,16 @@ export default class Home extends Component {
     const quote = await getQuote()
     const start = ['Nice to meeteth thee ', 'The pleasure is mine ', 'What a pleasure ', 'Bless thee '];
     const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
-
     return chance.pickone(start) + name + chance.pickone(exception) + quote;
   }
   getName = (text) => {
     if(!text) return
-
     const nameMatchRegex = text.match(/(my name is|i'm|\bim\b|\bi am\b|call me) (\w+)/i);
-
     if(!nameMatchRegex) return;
     const name = nameMatchRegex[2];
     const firstLetter = name[0].toUpperCase();
     return firstLetter + name.slice(1);
   }
-
-
-  prompt = () => {
-    const counter = this.state.promptCounter
-    if (counter === 0) {
-      return 'Whatev\'r thee doth click not yond scroll!';
-    } else if(counter === 1) {
-      return '...I hath tried to warneth thee. Might as well introduce thyself.';
-    } else {
-      return 'some other random prompts'
-    }
-
-
   lameResponse = async(word) => {
     const quote = await getQuote()
     const start = ['No thine is ', 'Thee call me ', 'How dare thee say ', 'Ha! ']
@@ -140,22 +103,20 @@ export default class Home extends Component {
   }
   getLame = (text) => {
     if(!text) return
-    const lameMatchRegex = text.match(/(\blame\b|not smart|not very smart|stupid|not clever|\bbad\b|whack|lousy|not intelligent|pathetic|weak)/i)
+    const lameMatchRegex = text.match(/(\blame\b|not smart|not very smart|poopface|stupid|not clever|\bbad\b|whack|lousy|not intelligent|pathetic|weak)/i)
     if(!lameMatchRegex) return
     return lameMatchRegex[1]
   }
 
   prompt = () => {
     const counter = this.state.promptCounter
-    if (counter === 0) return 'Whatev\'r thee doth, click not yond scroll!';
+    if (counter === 0) return 'Click not yond scroll!';
     if(counter === 1) return '...I hath tried to warneth thee. Might as well introduce thyself.';
     if(counter === 2) return 'Thy could comment on his shades or whatever.';
     if(counter === 3) return 'Wast he even that great a writer?';
     //a few more promts
     if(counter === 4) return 'Seems thou art getting the hang of this.'
-    if(counter === 5) return 'Thou art on thine own now...'
-    return '...'
-
+    return 'Thou art on thine own now...'
   }
   render() {
     const opacity = this.state.warningBool ? {display: 'none'} : {display: 'inline-block'}
@@ -182,21 +143,12 @@ export default class Home extends Component {
       ? <button><img className="scrollImage" src="scroll&pen.png" alt="the button" onClick={this.handleClick} /></button>
       : (<form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.text} onChange={this.handleText}></input>
-
-         
-
           <button onClick={this.handleSubmit}><img className="scrollImage smallScroll"  src="scroll&pen.png" alt="the submit button" /> </button>
-
       </form>)
       }
         <p>
           <em>{this.prompt()}</em>
         </p>
-
-
-        {/* <p>
-          <em>{this.state.warningBool ? 'Whatev\'r thee doth click not yond scroll!' : '...I hath tried to warneth thee. Might as well introduce thyself.'}</em>
-        </p> */}
       </div>
         
       <Link className="aboutUs" to='/about-us'>About the Authors</Link>

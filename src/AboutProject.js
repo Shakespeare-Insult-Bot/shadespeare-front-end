@@ -22,6 +22,8 @@ export default class AboutProject extends Component {
             <li>React</li>
             <li>Markov-chain-text</li>
             <li>Cors</li>
+            <li>Twilio</li>
+            <li>Chance</li>
           </ul>
         </div>
         <div className="project-links">
