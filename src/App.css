@@ -33,7 +33,7 @@
 .buttonField {
   position: relative;
   z-index: 2;
-  bottom: 50px
+  bottom: 50px;
 }
 .buttonField p {
   text-align: center;
@@ -80,6 +80,20 @@
 .aboutProject:hover{
   text-decoration: underline;
 }
+
+.loadingGif {
+  width: 100px;
+  z-index: 2;
+  opacity: 0.7;
+}
+.smallLoading {
+  width: 50px;
+  z-index: 2;
+  opacity: 0.7;
+  position: relative;
+  top: 15px
+}
+
 
 
 .response {
