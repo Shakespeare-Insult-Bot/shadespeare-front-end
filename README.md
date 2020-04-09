@@ -101,29 +101,30 @@ Together @ 4:30pm
 [x]catches shades in shadespeare
 [x]prioritizes name, once it uses that it doesnt do again
 [x]seperate catch for empty and no keyword found
-[]not catching suck/ sucks
-[]good morrow (in greetings)
-[]what brand are your shades (of shades)
-[]dumb (in lamewords)
+[x]not catching suck/ sucks
+[x]good morrow (in greetings)
+[x]dumb (in lamewords)
 
 
 ------------------more responses:
-[]goodbye
-[]who made you "the gods" "future of dev" "other nice thigns about us" (points to about me)
+[x]goodbye* 
+[x]who made you "the gods" "future of dev" "other nice thigns about us" (points to about me)*
 []Response check for alchemy(finest dev in the land)/monty[]python(lowest level of british comedy)/
-[]catch compliments (cool, rad, rock, awsome, sick, dope)
-[]catch about mother/your mom
 []regex match for "roast me, nice burn, etc. return "nice burn/roast me you say..."
-[]catch for test
-[]how are you/hows your day
+[]how are you/hows your day*
+[]when were your born/created (Monday)
+[]death day (I'm not dead)
+[]youre not real<!-- youre not real, im right here -->
+[]catch compliments (cool, rad, rock, awsome, sick, dope)
+[]if they comeback(goodbye)
+[]catch about mother/your mom
+[]catch for test*
 []romio and juleit, hamlet
 []to be or not to be (what is your question)
-[]when were your born/created (Monday)
 []catch authors
 [] how dare you
+[]what brand are your shades (of shades)
 []you look like dorje
-[]death day (I'm not dead)
-[]youre not real
 []comment on writing quality
 []his theatre burned down
 []bite my thumb
