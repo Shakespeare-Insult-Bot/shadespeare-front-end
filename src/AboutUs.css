@@ -57,7 +57,7 @@
     min-width: 200px;
     border: 4px solid #C6B9CD ;
     border-radius: 10px;
-    background-image: image('./public/4aRJ03l');
+    background-image: image('./assets/4aRJ03l.png');
     margin-top: 0px;
     margin-right: 10px;
     margin-bottom: 20px;
@@ -67,7 +67,7 @@
 .groupies-card {
     margin-top: 100px;
     display: flex;
-    background-image: url('./public/4aRJ03l');
+    background-image: url('./assets/4aRJ03l.png');
 
     /* z-index: 999; */
     /* border: 7px solid white; */
