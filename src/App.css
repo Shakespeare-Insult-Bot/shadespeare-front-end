@@ -5,6 +5,7 @@
 .home-page {
   height: 100vh;
   background-color: wheat;
+  background-size: cover;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -13,13 +14,15 @@
   font-family: 'Merienda', cursive;
 }
 .shade {
-  width: 350px;
+  /* width: 350px; */
+  height: 25vh;
 }
 .shadespeare {
-  width: 350px;
+  /* width: 350px; */
+  height: 50vh;
 }
 .shadeField {
-  padding-top: 8px;
+  padding-top: 30px;
 }
 .home-page button {
   background-color: inherit;
@@ -29,7 +32,12 @@
 }
 .buttonField {
   position: relative;
-  bottom: 15px
+  z-index: 2;
+  bottom: 50px
+}
+.buttonField p {
+  text-align: center;
+  width: 50vw;
 }
 .buttonField p {
   text-align: center;
@@ -77,10 +85,12 @@
 .response {
   position:relative;
   line-height:2em;
-  overflow:hidden;
+
+  overflow: hidden;
 
     font-size: 1.3em;
-    height: 50px;
+    /* height: 50px; */
+
     margin-bottom: 0px;
     margin-top: -6px;
     padding: 0px 5px 0px 5px;
@@ -92,21 +102,33 @@
   top:0; bottom:0; right:0;
   width:100%;
   background:wheat;
-  animation: show 4s ease-in;
+  animation: show 3.5s ease-in;
   animation-fill-mode: forwards;
 }
 @-webkit-keyframes show { /* Chrome, Safari */
   0% {width:100%}
-  25% {width:75%}
+  10% {width:90%}
+  20% {width:80%}
+  30% {width:70%}
+  40% {width:60%}
   50% {width:50%}
-  75% {width:25%;}
-  100% {width:0%;}
+  60% {width:40%}
+  70% {width:30%}
+  80% {width:20%}
+  90% {width:10%}
+  100% {width:0%}
 }
 @keyframes show {
   0% {width:100%}
-  25% {width:75%}
+  10% {width:90%}
+  20% {width:80%}
+  30% {width:70%}
+  40% {width:60%}
   50% {width:50%}
-  75% {width: 25%;}
-  100% {width: 0%;}
+  60% {width:40%}
+  70% {width:30%}
+  80% {width:20%}
+  90% {width:10%}
+  100% {width:0%}
 }
 

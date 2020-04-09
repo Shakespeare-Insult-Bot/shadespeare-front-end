@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
+import { Link } from 'react-router-dom'
 
 import './AboutUs.css';
 
@@ -11,8 +12,9 @@ export default class AboutUs extends Component {
                 <h1 className='title'>Shadespeare, Bard of Insults</h1>
 
                 <div className='card-div'>
-                    <img src="https://i.imgur.com/fX6acBr.jpg" alt="card background"  className="card-img"></img>
+                    <img src="https://i.imgur.com/hAIRYe1.png" alt="card background"  className="card-img"></img>
                     <div>
+                        
                         <h2 className='our-names'>Fiona Ochs</h2>
                         <p> You Bastard </p>
                         <div className='our-links'>
@@ -23,8 +25,8 @@ export default class AboutUs extends Component {
                 </div>
 
                 <div className='card-div'>
-                    <img src="https://i.imgur.com/0cJB6KI.jpg" alt="card background" className="card-img"></img>
-                    <div>
+                    <img src="https://i.imgur.com/WlLReq6.png" alt="card background" className="card-img"></img>
+                    <div className="scott">
                         <h2 className='our-names'>Scott Harlan</h2>
                         <p> You Bastard </p>
                         <div className='our-links'>
@@ -35,7 +37,7 @@ export default class AboutUs extends Component {
                     </div>
                     
                     <div className='card-div'>
-                        <img src="https://i.imgur.com/ohrFxBl.jpg" alt="card background" className="card-img"></img>
+                        <img src="https://i.imgur.com/KmTHuQH.png" alt="card background" className="card-img"></img>
                         <div>
                             <h2 className='our-names'>Cody Brown</h2>
                             <p> You Bastard </p>
@@ -48,7 +50,7 @@ export default class AboutUs extends Component {
 
                       
                     <div className='card-div'>
-                        <img src="https://i.imgur.com/6p2qzIM.jpg" alt="card background" className="card-img"></img>
+                        <img src="https://i.imgur.com/R0wRlu4.png" alt="card background" className="card-img"></img>
                         <div>
                             <h2 className='our-names'>James Eserjose</h2>
                             <p> You Bastard </p>
@@ -58,7 +60,11 @@ export default class AboutUs extends Component {
                             </div>
                         </div>
                     </div>
+                    <Link className="home" to='/'>Back to home</Link>
+                    <Link className="about-Project" to='/about-project'>About Shadespeare</Link>
                 </div>
-        )
-    }
-}
+                
+                
+                )
+            }
+        }
