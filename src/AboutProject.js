@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FaGithub } from 'react-icons/fa';
 import './AboutUs.css'
+import { Link } from 'react-router-dom'
 
 
 export default class AboutProject extends Component {
@@ -26,11 +27,14 @@ export default class AboutProject extends Component {
         <div className="project-links">
           <a href='https://github.com/Shakespeare-Insult-Bot' target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
         </div>
-
+        <div>
+          <Link className="about-Us" to='/about-us'>About the Authors</Link>
+        </div>   
+          <Link className="home" to='/'>Back to home</Link>
                        
-
-
       </div>
     )
   }
 }
+
+
