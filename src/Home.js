@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import request from 'superagent'
+import getQuote from './utils.js'
 const chance = require('chance').Chance();
+
 
 
 
@@ -33,23 +35,55 @@ export default class Home extends Component {
 
   handleSubmit = async(e) => {
     e.preventDefault()
-    const name = this.getName(this.state.text)
-    const response = await this.nameResponse(name) 
+    const text = this.state.text
+    const name = this.getName(text)
+    const lameWord = this.getLame(text)
+    const shadeWord = this.getShade(text)
+    const helloWord = this.getHello(text)
+    
+    let response
+    if (name) response = await this.nameResponse(name) 
+    if (helloWord) response = await this.helloResponse(helloWord)
+    if (lameWord) response = await this.lameResponse(lameWord)
+    if (shadeWord) response = await this.shadeResponse(shadeWord)
+
+    if (!response) {
+      const quoteData = await request.post('https://shadespeare-staging.herokuapp.com/api/v1/tweets')
+      const quote = quoteData.body.tweetText
+      const rebuttal = ['Thy have nothing witty to say? ', 'Is thy quill dry? ', 'Are thine fingers broken? ', 'Hast thou had enough? ', 'Ist thou mute? ']
+      response = chance.pickone(rebuttal) + quote
+    }
     this.setState({
       response: response,
-      promptCounter: this.state.promptCounter + 1 })
-    
+      promptCounter: this.state.promptCounter + 1,
+      text: ''
+    })
+  }
+  helloResponse = (helloWord) => {
+    const greeting = [' to you as well.', ' indeed...', ' back at thee!']
+    const firstLetter = helloWord[0].toUpperCase();
+    return firstLetter + helloWord.slice(1) + chance.pickone(greeting)
+  }
+  getHello = (text) => {
+    if(!text) return
+    const helloMatchRegex = text.match(/(hello|hi|wassup|sup|good morning|good day|morning|good evening|yo|hey)/i)
+    if(!helloMatchRegex) return
+    return helloMatchRegex[1]
+  }
+  shadeResponse = (shadeWord) => {
+    const shadeQuotes = [`Mine ${shadeWord}? Nay they are legend!`, `My brilliance requires such ${shadeWord}!`, `These ${shadeWord} are needed for obscuring your visage.`, `To spit fire like this you need ${shadeWord} like these.`, `Shadespeare requires ${shadeWord}.` ]
+    return chance.pickone(shadeQuotes)
+  }
+  getShade = (text) => {
+    if(!text) return
+    const shadeMatchRegex = text.match(/(shades|sunglasses|glasses|spectacles|bifocals)/i)
+    if(!shadeMatchRegex) return
+    return shadeMatchRegex[1]
   }
   nameResponse = async(name) => {
-    const quoteData = await request.post('https://shadespeare-staging.herokuapp.com/api/v1/tweets')
-    let quote = quoteData.body.tweetText
-    if(!quote.startsWith('I ') && !quote.startsWith('I\'ll')) {
-      const firstLetter = quote[0].toLowerCase();
-      quote = firstLetter + quote.slice(1);
-    }
-    const start = ['Nice to meeteth thee ', 'The pleasure is mine ', 'What a pleasure '];
-    const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet', ', even so'];
-    console.log('===============chance: ', chance.pickone(start) )
+    const quote = await getQuote()
+    const start = ['Nice to meeteth thee ', 'The pleasure is mine ', 'What a pleasure ', 'Bless thee '];
+    const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
     return chance.pickone(start) + name + chance.pickone(exception) + quote;
   }
   getName = (text) => {
@@ -60,17 +94,29 @@ export default class Home extends Component {
     const firstLetter = name[0].toUpperCase();
     return firstLetter + name.slice(1);
   }
+  lameResponse = async(word) => {
+    const quote = await getQuote()
+    const start = ['No thine is ', 'Thee call me ', 'How dare thee say ', 'Ha! a ']
+    const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
+    return chance.pickone(start) + word + chance.pickone(exception) + quote;
+  }
+  getLame = (text) => {
+    if(!text) return
+    const lameMatchRegex = text.match(/(lame|not smart|not very smart|stupid|not clever|bad|whack|lousy|not intelligent|pathetic)/i)
+    if(!lameMatchRegex) return
+    return lameMatchRegex[1]
+  }
 
   prompt = () => {
     const counter = this.state.promptCounter
-    if (counter === 0) {
-      return 'Whatev\'r thee doth click not yond scroll!';
-    } else if(counter === 1) {
-      return '...I hath tried to warneth thee. Might as well introduce thyself.';
-    } else {
-      return 'some other random prompts'
-    }
-
+    if (counter === 0) return 'Whatev\'r thee doth click not yond scroll!';
+    if(counter === 1) return '...I hath tried to warneth thee. Might as well introduce thyself.';
+    if(counter === 2) return 'Thy could comment on his shades or whatever.';
+    if(counter === 3) return 'Wast he even that great a writer?';
+    //a few more promts
+    if(counter === 4) return 'Seems thou art getting the hang of this.'
+    if(counter === 5) return 'Thou art on thine own now...'
+    return '...'
   }
   render() {
     const opacity = this.state.warningBool ? {display: 'none'} : {display: 'inline-block'}
@@ -97,17 +143,12 @@ export default class Home extends Component {
       ? <button><img className="scrollImage" src="scroll&pen.png" alt="the button" onClick={this.handleClick} /></button>
       : (<form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.text} onChange={this.handleText}></input>
-          <button onClick={this.handleSubmit}><img className="scrollImage" src="scroll&pen.png" alt="the submit button" /> </button>
+          <button onClick={this.handleSubmit}><img className="scrollImage smallScroll"  src="scroll&pen.png" alt="the submit button" /> </button>
       </form>)
       }
         <p>
           <em>{this.prompt()}</em>
         </p>
-
-
-        {/* <p>
-          <em>{this.state.warningBool ? 'Whatev\'r thee doth click not yond scroll!' : '...I hath tried to warneth thee. Might as well introduce thyself.'}</em>
-        </p> */}
       </div>
         
       <Link className="aboutUs" to='/about-us'>About the Authors</Link>

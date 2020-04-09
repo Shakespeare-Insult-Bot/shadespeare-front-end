@@ -47,6 +47,11 @@
 .scrollImage:active {
   transform: translateY(2px);
   filter: drop-shadow(1px 1px 1px black);
+}
+.smallScroll {
+  width: 75px;
+  position: relative;
+  top: 20px
 
 }
 .aboutUs {
