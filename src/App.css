@@ -12,13 +12,6 @@
   align-items: center;
   font-family: 'Merienda', cursive;
 }
-.response {
-  height: 50px;
-  margin-bottom: 0px;
-  margin-top: -6px;
-  padding: 0px 5px 0px 5px;
-  border: 3px dashed red;
-}
 .shade {
   width: 350px;
 }
@@ -38,6 +31,10 @@
   position: relative;
   bottom: 15px
 }
+.buttonField p {
+  text-align: center;
+  width: 50vw;
+}
 .scrollImage {
   width: 200px;
   filter: drop-shadow(4px 4px 4px black);
@@ -50,6 +47,11 @@
 .scrollImage:active {
   transform: translateY(2px);
   filter: drop-shadow(1px 1px 1px black);
+}
+.smallScroll {
+  width: 75px;
+  position: relative;
+  top: 20px
 
 }
 .aboutUs {
@@ -76,6 +78,14 @@
   position:relative;
   line-height:2em;
   overflow:hidden;
+
+    font-size: 1.3em;
+    height: 50px;
+    margin-bottom: 0px;
+    margin-top: -6px;
+    padding: 0px 5px 0px 5px;
+    border: 3px dashed red;
+  
 }
 .fadingEffect {
   position:absolute;
