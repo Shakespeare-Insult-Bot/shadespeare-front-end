@@ -39,6 +39,10 @@
   text-align: center;
   width: 50vw;
 }
+.buttonField p {
+  text-align: center;
+  width: 50vw;
+}
 .scrollImage {
   width: 200px;
   filter: drop-shadow(4px 4px 4px black);
@@ -81,10 +85,12 @@
 .response {
   position:relative;
   line-height:2em;
+
   overflow: hidden;
 
     font-size: 1.3em;
     /* height: 50px; */
+
     margin-bottom: 0px;
     margin-top: -6px;
     padding: 0px 5px 0px 5px;
