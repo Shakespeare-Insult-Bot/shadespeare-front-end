@@ -12,12 +12,14 @@ export default class Home extends Component {
     response: '',
     warningBool: true,
     text: '',
-    promptCounter: 0
+    promptCounter: 0,
+    nameBool: true,
+    loadingBool: false
   }
 
   handleClick = async() => {
+    this.setState({loadingBool: true})
     try{
-
       const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
       
       this.setState({
@@ -28,6 +30,7 @@ export default class Home extends Component {
     } catch(err){
       console.log(err);
     }
+    this.setState({loadingBool: false})
   }
   handleText = (e) => {
     this.setState({text: e.target.value})
@@ -35,30 +38,47 @@ export default class Home extends Component {
 
   handleSubmit = async(e) => {
     e.preventDefault()
-    const text = this.state.text
-    const name = this.getName(text)
-    const lameWord = this.getLame(text)
-    const shadeWord = this.getShade(text)
-    const helloWord = this.getHello(text)
+    this.setState({loadingBool: true})
     
-    let response
-    if (name) response = await this.nameResponse(name) 
-    if (helloWord) response = await this.helloResponse(helloWord)
-    if (lameWord) response = await this.lameResponse(lameWord)
-    if (shadeWord) response = await this.shadeResponse(shadeWord)
-
-    if (!response) {
-      const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
-      const quote = quoteData.body.tweetText
-      const rebuttal = ['Hast thy nothing witty to say? ', 'Is thy quill dry? ', 'Are thine fingers broken? ', 'Hast thou had enough? ', 'Ist thou mute? ']
-      //if text is empty reply with mute and dry quill, save others for text but no found response
-      response = chance.pickone(rebuttal) + quote
+    try {
+      const text = this.state.text
+      const name = this.getName(text)
+      const lameWord = this.getLame(text)
+      const shadeWord = this.getShade(text)
+      const helloWord = this.getHello(text)
+      
+      let response
+      if (helloWord) response = await this.helloResponse(helloWord)
+      if (lameWord) response = await this.lameResponse(lameWord)
+      if (shadeWord) response = await this.shadeResponse(shadeWord)
+      if (name && this.state.nameBool) {
+        response = await this.nameResponse(name) 
+        this.setState({nameBool: false})
+      }
+  
+      if (!text) response = await this.noInputResponse()
+      if (!response) response = await this.noKeywordsResponse()
+      this.setState({
+        response: response,
+        promptCounter: this.state.promptCounter + 1,
+        text: ''
+      })
+    } catch(err) {
+      console.log(err)
     }
-    this.setState({
-      response: response,
-      promptCounter: this.state.promptCounter + 1,
-      text: ''
-    })
+    this.setState({loadingBool: false})
+  }
+  noKeywordsResponse = async() => {
+    const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
+    const quote = quoteData.body.tweetText
+    const rebuttal = ['Hast thy nothing witty to say? ', 'Hast thou had enough? ', quote]
+    return chance.pickone(rebuttal)
+  }
+  noInputResponse = async() => {
+    const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
+    const quote = quoteData.body.tweetText
+    const rebuttal = ['Is thy quill dry? ', 'Are thine fingers broken? ', 'Ist thou mute? ', quote]
+    return chance.pickone(rebuttal)
   }
   helloResponse = (helloWord) => {
     const greeting = [' to you as well.', ' indeed...', ' back at thee!']
@@ -77,7 +97,7 @@ export default class Home extends Component {
   }
   getShade = (text) => {
     if(!text) return
-    const shadeMatchRegex = text.match(/(shades|sunglasses|glasses|spectacles|bifocals)/i)
+    const shadeMatchRegex = text.match(/(\bshades\b|sunglasses|glasses|spectacles|bifocals)/i)
     if(!shadeMatchRegex) return
     return shadeMatchRegex[1]
   }
@@ -107,7 +127,6 @@ export default class Home extends Component {
     if(!lameMatchRegex) return
     return lameMatchRegex[1]
   }
-
   prompt = () => {
     const counter = this.state.promptCounter
     if (counter === 0) return 'Click not yond scroll!';
@@ -132,23 +151,22 @@ export default class Home extends Component {
         </h2>}
 
         <img style={opacity} className="shade" src="shade-bottom.png" alt="bottom" />
-
       </div>
       
 
       <div className="buttonField">
-
-
       {this.state.warningBool 
-      ? <button><img className="scrollImage" src="scroll&pen.png" alt="the button" onClick={this.handleClick} /></button>
-      : (<form onSubmit={this.handleSubmit}>
+        ? ( this.state.loadingBool 
+          ? (<img className="loadingGif" src="feather.gif" alt="loading" />)
+          :<button><img className="scrollImage" src="scroll&pen.png" alt="the button" onClick={this.handleClick} /></button>)
+        : (<form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.text} onChange={this.handleText}></input>
-          <button onClick={this.handleSubmit}><img className="scrollImage smallScroll"  src="scroll&pen.png" alt="the submit button" /> </button>
-      </form>)
+            {this.state.loadingBool 
+            ? (<img className="smallLoading" src="feather.gif" alt="loading" />)
+            : <button onClick={this.handleSubmit}><img className="scrollImage smallScroll"  src="scroll&pen.png" alt="the submit button" /> </button>}
+        </form>)
       }
-        <p>
-          <em>{this.prompt()}</em>
-        </p>
+        <p><em>{this.prompt()}</em></p>
       </div>
         
       <Link className="aboutUs" to='/about-us'>About the Authors</Link>

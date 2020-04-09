@@ -73,43 +73,57 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 +++++++++++++++++++++++++++
 TO DO:
--initial debug/testing
--update about us personal quotes
--update tech stack
--chance front end site name to 
+[x]initial debug/testing
+[x]update about us personal quotes
+[x]update tech stack
+[]chance front end site name to 
 
 Chatbot
--fix initial debugging issues
--hit api on load to wake up heroku
--more responses/catches. 
--Response check for alchemy(finest dev in the land)/monty-python(lowest level of british comedy)/
+[]fix initial debugging issues
+[]hit api on load to wake up heroku
+[]more responses/catches. 
 
 Zoombot
--get best quotes for zoom bot (put favs in array and chance.pickone )
--zoom bot needs to introduce it self, maybe prepare the audience for a sick burn
--maybe closing statement? (goodbye, we would be better off as strangers)
+[]get best quotes for zoom bot (put favs in array and chance.pickone )
+[]zoom bot needs to introduce it self, maybe prepare the audience for a sick burn
+[]maybe closing statement? (goodbye, we would be better off as strangers)
 
--------Lunchcheck-in---------
 
--Zoom ambush at 4
+
+[]Zoom ambush at 4
 
 Together @ 4:30pm
--polish code /debug again 
--solidify talking points
+[]polish code /debug again 
+[]solidify talking points
 
 
-bugs:
--catches shades in shadespeare
--prioritizes name, once it uses that it doesnt do again
--catch for test
--seperate catch for empty and no keyword found
--romio and juleit, hamlet
--to be or not to be (what is your question)
--when were your born/created (Monday)
--catch authors
--catch about mothers
--goodbye
--not catching suck/ sucks
--catch compliments (cool, rad, rock, awsome, sick, dope)
--good morrow (in greetings)
--what brand are your shades
+------------------bugs:
+[x]catches shades in shadespeare
+[x]prioritizes name, once it uses that it doesnt do again
+[x]seperate catch for empty and no keyword found
+[]not catching suck/ sucks
+[]good morrow (in greetings)
+[]what brand are your shades (of shades)
+[]dumb (in lamewords)
+
+
+------------------more responses:
+[]goodbye
+[]who made you "the gods" "future of dev" "other nice thigns about us" (points to about me)
+[]Response check for alchemy(finest dev in the land)/monty[]python(lowest level of british comedy)/
+[]catch compliments (cool, rad, rock, awsome, sick, dope)
+[]catch about mother/your mom
+[]regex match for "roast me, nice burn, etc. return "nice burn/roast me you say..."
+[]catch for test
+[]how are you/hows your day
+[]romio and juleit, hamlet
+[]to be or not to be (what is your question)
+[]when were your born/created (Monday)
+[]catch authors
+[] how dare you
+[]you look like dorje
+[]death day (I'm not dead)
+[]youre not real
+[]comment on writing quality
+[]his theatre burned down
+[]bite my thumb
