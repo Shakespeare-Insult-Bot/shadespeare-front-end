@@ -14,7 +14,9 @@ export default class AboutUs extends Component {
                     <img src="https://i.imgur.com/fX6acBr.jpg" alt="card background"  className="card-img"></img>
                     <div>
                         <h2 className='our-names'>Fiona Ochs</h2>
-                        <p> You Bastard </p>
+                        <p>"Thine be a hamster and lack gall." <em>-Shadespeare</em></p>
+                        
+                        
                         <div className='our-links'>
                             <a href="https://www.linkedin.com/in/fionaochs/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
                             <a href="https://github.com/fionaochs" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
@@ -26,7 +28,7 @@ export default class AboutUs extends Component {
                     <img src="https://i.imgur.com/0cJB6KI.jpg" alt="card background" className="card-img"></img>
                     <div>
                         <h2 className='our-names'>Scott Harlan</h2>
-                        <p> You Bastard </p>
+                        <p>"Well, every one can master a piece of trash like you." <em>-Shadespeare</em></p>
                         <div className='our-links'>
                             <a href="https://www.linkedin.com/in/scottharlan-pnw/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
                             <a href="https://github.com/SeHarlan" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
@@ -38,7 +40,8 @@ export default class AboutUs extends Component {
                         <img src="https://i.imgur.com/ohrFxBl.jpg" alt="card background" className="card-img"></img>
                         <div>
                             <h2 className='our-names'>Cody Brown</h2>
-                            <p> You Bastard </p>
+                            <p>"You Bastard" <em>-Shadespeare</em></p>
+                    
                             <div className='our-links'>
                                 <a href="https://www.linkedin.com/in/codylylebrown/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
                                 <a href="https://github.com/cody2934" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
@@ -51,7 +54,8 @@ export default class AboutUs extends Component {
                         <img src="https://i.imgur.com/6p2qzIM.jpg" alt="card background" className="card-img"></img>
                         <div>
                             <h2 className='our-names'>James Eserjose</h2>
-                            <p> You Bastard </p>
+                            <p>"As much pleasure, just so much joy, when thee leave the room." <em>-Shadespeare</em></p>
+                        
                             <div className='our-links'>
                                 <a href="https://www.linkedin.com/in/jamesreserjose/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
                                 <a href="https://github.com/ezjim" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>

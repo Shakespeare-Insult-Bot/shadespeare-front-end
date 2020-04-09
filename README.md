@@ -71,9 +71,45 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 
-don't worry about mobile!!!!!!
++++++++++++++++++++++++++++
+TO DO:
+-initial debug/testing
+-update about us personal quotes
+-update tech stack
+-chance front end site name to 
 
-transparent scroll as a border. not as wide as page but as tall. 
-our cards on the scroll
-background color tan
-lighter shade cards
+Chatbot
+-fix initial debugging issues
+-hit api on load to wake up heroku
+-more responses/catches. 
+-Response check for alchemy(finest dev in the land)/monty-python(lowest level of british comedy)/
+
+Zoombot
+-get best quotes for zoom bot (put favs in array and chance.pickone )
+-zoom bot needs to introduce it self, maybe prepare the audience for a sick burn
+-maybe closing statement? (goodbye, we would be better off as strangers)
+
+-------Lunchcheck-in---------
+
+-Zoom ambush at 4
+
+Together @ 4:30pm
+-polish code /debug again 
+-solidify talking points
+
+
+bugs:
+-catches shades in shadespeare
+-prioritizes name, once it uses that it doesnt do again
+-catch for test
+-seperate catch for empty and no keyword found
+-romio and juleit, hamlet
+-to be or not to be (what is your question)
+-when were your born/created (Monday)
+-catch authors
+-catch about mothers
+-goodbye
+-not catching suck/ sucks
+-catch compliments (cool, rad, rock, awsome, sick, dope)
+-good morrow (in greetings)
+-what brand are your shades

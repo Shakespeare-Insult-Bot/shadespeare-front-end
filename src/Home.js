@@ -11,14 +11,14 @@ export default class Home extends Component {
   state = { 
     response: '',
     warningBool: true,
-    text: null,
+    text: '',
     promptCounter: 0
   }
 
   handleClick = async() => {
     try{
 
-      const quoteData = await request.post('https://shadespeare-staging.herokuapp.com/api/v1/tweets')
+      const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
       
       this.setState({
         response: quoteData.body.tweetText,
@@ -48,7 +48,7 @@ export default class Home extends Component {
     if (shadeWord) response = await this.shadeResponse(shadeWord)
 
     if (!response) {
-      const quoteData = await request.post('https://shadespeare-staging.herokuapp.com/api/v1/tweets')
+      const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
       const quote = quoteData.body.tweetText
       const rebuttal = ['Hast thy nothing witty to say? ', 'Is thy quill dry? ', 'Are thine fingers broken? ', 'Hast thou had enough? ', 'Ist thou mute? ']
       //if text is empty reply with mute and dry quill, save others for text but no found response
@@ -103,21 +103,20 @@ export default class Home extends Component {
   }
   getLame = (text) => {
     if(!text) return
-    const lameMatchRegex = text.match(/(\blame\b|not smart|not very smart|stupid|not clever|\bbad\b|whack|lousy|not intelligent|pathetic|weak)/i)
+    const lameMatchRegex = text.match(/(\blame\b|not smart|not very smart|poopface|stupid|not clever|\bbad\b|whack|lousy|not intelligent|pathetic|weak)/i)
     if(!lameMatchRegex) return
     return lameMatchRegex[1]
   }
 
   prompt = () => {
     const counter = this.state.promptCounter
-    if (counter === 0) return 'Whatev\'r thee doth, click not yond scroll!';
+    if (counter === 0) return 'Click not yond scroll!';
     if(counter === 1) return '...I hath tried to warneth thee. Might as well introduce thyself.';
     if(counter === 2) return 'Thy could comment on his shades or whatever.';
     if(counter === 3) return 'Wast he even that great a writer?';
     //a few more promts
     if(counter === 4) return 'Seems thou art getting the hang of this.'
-    if(counter === 5) return 'Thou art on thine own now...'
-    return '...'
+    return 'Thou art on thine own now...'
   }
   render() {
     const opacity = this.state.warningBool ? {display: 'none'} : {display: 'inline-block'}
