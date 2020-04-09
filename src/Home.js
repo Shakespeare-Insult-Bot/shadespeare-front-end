@@ -50,7 +50,8 @@ export default class Home extends Component {
     if (!response) {
       const quoteData = await request.post('https://shadespeare-staging.herokuapp.com/api/v1/tweets')
       const quote = quoteData.body.tweetText
-      const rebuttal = ['Thy have nothing witty to say? ', 'Is thy quill dry? ', 'Are thine fingers broken? ', 'Hast thou had enough? ', 'Ist thou mute? ']
+      const rebuttal = ['Hast thy nothing witty to say? ', 'Is thy quill dry? ', 'Are thine fingers broken? ', 'Hast thou had enough? ', 'Ist thou mute? ']
+      //if text is empty reply with mute and dry quill, save others for text but no found response
       response = chance.pickone(rebuttal) + quote
     }
     this.setState({
@@ -66,7 +67,7 @@ export default class Home extends Component {
   }
   getHello = (text) => {
     if(!text) return
-    const helloMatchRegex = text.match(/(hello|hi|wassup|sup|good morning|good day|morning|good evening|yo|hey)/i)
+    const helloMatchRegex = text.match(/(hello|\bhi\b|wassup|\bsup\b|good morning|good day|morning|good evening|\byo\b|\bhey\b)/i)
     if(!helloMatchRegex) return
     return helloMatchRegex[1]
   }
@@ -88,7 +89,7 @@ export default class Home extends Component {
   }
   getName = (text) => {
     if(!text) return
-    const nameMatchRegex = text.match(/(my name is|i'm|im|i am|call me|thy name) (\w+)/i);
+    const nameMatchRegex = text.match(/(my name is|i'm|\bim\b|\bi am\b|call me) (\w+)/i);
     if(!nameMatchRegex) return;
     const name = nameMatchRegex[2];
     const firstLetter = name[0].toUpperCase();
@@ -96,20 +97,20 @@ export default class Home extends Component {
   }
   lameResponse = async(word) => {
     const quote = await getQuote()
-    const start = ['No thine is ', 'Thee call me ', 'How dare thee say ', 'Ha! a ']
+    const start = ['No thine is ', 'Thee call me ', 'How dare thee say ', 'Ha! ']
     const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
     return chance.pickone(start) + word + chance.pickone(exception) + quote;
   }
   getLame = (text) => {
     if(!text) return
-    const lameMatchRegex = text.match(/(lame|not smart|not very smart|stupid|not clever|bad|whack|lousy|not intelligent|pathetic)/i)
+    const lameMatchRegex = text.match(/(\blame\b|not smart|not very smart|stupid|not clever|\bbad\b|whack|lousy|not intelligent|pathetic|weak)/i)
     if(!lameMatchRegex) return
     return lameMatchRegex[1]
   }
 
   prompt = () => {
     const counter = this.state.promptCounter
-    if (counter === 0) return 'Whatev\'r thee doth click not yond scroll!';
+    if (counter === 0) return 'Whatev\'r thee doth, click not yond scroll!';
     if(counter === 1) return '...I hath tried to warneth thee. Might as well introduce thyself.';
     if(counter === 2) return 'Thy could comment on his shades or whatever.';
     if(counter === 3) return 'Wast he even that great a writer?';
