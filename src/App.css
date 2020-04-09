@@ -1,30 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
 .home-page {
   height: 100vh;
   background-color: wheat;
-  padding: 20px 0 20px 0;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
-  
   font-family: 'Merienda', cursive;
-  font-size: 1.2em;
 }
 .response {
   height: 50px;
-  
+  margin-bottom: 0px;
+  margin-top: -6px;
+  padding: 0px 5px 0px 5px;
+  border: 3px dashed red;
+}
+.shade {
+  width: 350px;
 }
 .shadespeare {
-  width: 200px;
+  width: 350px;
+}
+.shadeField {
+  padding-top: 8px;
 }
 .home-page button {
   background-color: inherit;
   border: none;
   user-select: none;
   outline: none;
-  
+}
+.buttonField {
+  position: relative;
+  bottom: 15px
 }
 .scrollImage {
   width: 200px;
@@ -40,6 +52,51 @@
   filter: drop-shadow(1px 1px 1px black);
 
 }
+.aboutUs {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  text-decoration: none;
+}
+.aboutUs:hover{
+  text-decoration: underline;
+}
+.aboutProject {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  text-decoration: none;
+}
+.aboutProject:hover{
+  text-decoration: underline;
+}
 
 
+.response {
+  position:relative;
+  line-height:2em;
+  overflow:hidden;
+}
+.fadingEffect {
+  position:absolute;
+  top:0; bottom:0; right:0;
+  width:100%;
+  background:wheat;
+  animation: show 4s ease-in;
+  animation-fill-mode: forwards;
+}
+@-webkit-keyframes show { /* Chrome, Safari */
+  0% {width:100%}
+  25% {width:75%}
+  50% {width:50%}
+  75% {width:25%;}
+  100% {width:0%;}
+}
+@keyframes show {
+  0% {width:100%}
+  25% {width:75%}
+  50% {width:50%}
+  75% {width: 25%;}
+  100% {width: 0%;}
+}
 
