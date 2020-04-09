@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export default class AboutProject extends Component {
   render() {
     return (
-      <div className="aboutus">
+      <div className="about--us">
         <img src="wallpaper.jpg" className='wallpaper' alt='wallpaper'></img>
         <h1 className='title'>Shadespeare, Bard of Insults</h1>
         

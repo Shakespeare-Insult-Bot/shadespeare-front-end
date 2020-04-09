@@ -52,14 +52,14 @@ export default class Home extends Component {
     console.log('===============chance: ', chance.pickone(start) )
     return chance.pickone(start) + name + chance.pickone(exception) + quote;
   }
-  getName = (text) => {
-    if(!text) return
-    const nameMatchRegex = text.match(/(my name is|i'm|im|i am|call me|thy name) (\w+)/i);
-    if(!nameMatchRegex) return;
-    const name = nameMatchRegex[2];
-    const firstLetter = name[0].toUpperCase();
-    return firstLetter + name.slice(1);
-  }
+  // getName = (text) => {
+  //   if(!text) return
+  //   const nameMatchRegex = text.match(/(my name is|i'm|im|i am|call me|thy name) (\w+)/i);
+  //   if(!nameMatchRegex) return;
+  //   const name = nameMatchRegex[2];
+  //   const firstLetter = name[0].toUpperCase();
+  //   return firstLetter + name.slice(1);
+  // }
 
   prompt = () => {
     const counter = this.state.promptCounter

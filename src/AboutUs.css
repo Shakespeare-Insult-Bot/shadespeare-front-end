@@ -5,7 +5,7 @@ ul {
 }
 
 .card-img {
-    width: 20.5vw;
+    width: 18vw;
     border: rgba(114, 19, 19, 0.671) outset 2px;
     
 }
@@ -44,16 +44,50 @@ ul {
     text-align: center;
     color: rgb(206, 175, 3);
 }
-
+.about--us /* for .about-Project centering words */{
+    font-family: 'Merienda', cursive;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    text-align: center;
+    color: rgb(206, 175, 3);
+}
+        /* .our-names {
+            position: fixed;
+            top: 600px;
+            text-align: center;
+            justify-content: center;
+        } */
+/* .text-bg {
+    justify-content: center;
+    margin-top: 25px;
+    height:25vh;
+    max-width: 30vh;
+    z-index: -1;
+    
+} */
 .card-div {
     height: 45vh;
     max-width: 20vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /* justify-content: center; */
     align-items: center;
+    margin-bottom: 35px;
 }
-
+.scott {
+    height: 45vh;
+    max-width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+   
+    
+}
 .social-icon {
     color: rgb(206, 175, 3);
     margin: 6px;
