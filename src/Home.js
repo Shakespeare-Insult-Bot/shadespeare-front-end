@@ -4,9 +4,6 @@ import request from 'superagent'
 import getQuote from './utils.js'
 const chance = require('chance').Chance();
 
-
-
-
 export default class Home extends Component {
   state = { 
     response: '',
@@ -21,7 +18,6 @@ export default class Home extends Component {
     this.setState({loadingBool: true})
     try{
       const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
-      
       this.setState({
         response: quoteData.body.tweetText,
         warningBool: false,
@@ -32,6 +28,7 @@ export default class Home extends Component {
     }
     this.setState({loadingBool: false})
   }
+
   handleText = (e) => {
     this.setState({text: e.target.value})
   }
@@ -75,32 +72,29 @@ export default class Home extends Component {
     }
     this.setState({loadingBool: false})
   }
+
   noKeywordsResponse = async() => {
     const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
     const quote = quoteData.body.tweetText
     const rebuttal = ['Hast thy nothing witty to say? ', 'Hast thou had enough? ', quote]
-    return chance.pickone(rebuttal)
+    return chance.weighted(rebuttal, [1,1,3])
   }
   noInputResponse = async() => {
     const quoteData = await request.post('https://shadespeare.herokuapp.com/api/v1/tweets')
     const quote = quoteData.body.tweetText
     const rebuttal = ['Is thy quill dry? ', 'Are thine fingers broken? ', 'Ist thou mute? ', quote]
-    return chance.pickone(rebuttal)
+    return chance.weighted(rebuttal, [1,1,1,3])
+  }
+  getHello = (text) => {
+  if(!text) return
+    const helloMatchRegex = text.match(/(hello|\bhi\b|wassup|\bsup\b|good morning|good day|morning|good evening|\byo\b|\bhey\b|good morrow)/i)
+    if(!helloMatchRegex) return
+    return helloMatchRegex[1]
   }
   helloResponse = (helloWord) => {
     const greeting = [' to you as well.', ' indeed...', ' back at thee!']
     const firstLetter = helloWord[0].toUpperCase();
     return firstLetter + helloWord.slice(1) + chance.pickone(greeting)
-  }
-  getHello = (text) => {
-    if(!text) return
-    const helloMatchRegex = text.match(/(hello|\bhi\b|wassup|\bsup\b|good morning|good day|morning|good evening|\byo\b|\bhey\b|good morrow)/i)
-    if(!helloMatchRegex) return
-    return helloMatchRegex[1]
-  }
-  shadeResponse = (shadeWord) => {
-    const shadeQuotes = [`Mine ${shadeWord}? Nay they are legend!`, `My brilliance requires such ${shadeWord}!`, `These ${shadeWord} are needed for obscuring your visage.`, `To spit fire like this you need ${shadeWord} like these.`, `Shadespeare requires ${shadeWord}.` ]
-    return chance.pickone(shadeQuotes)
   }
   getShade = (text) => {
     if(!text) return
@@ -108,11 +102,9 @@ export default class Home extends Component {
     if(!shadeMatchRegex) return
     return shadeMatchRegex[1]
   }
-  nameResponse = async(name) => {
-    const quote = await getQuote()
-    const start = ['Nice to meeteth thee ', 'The pleasure is mine ', 'What a pleasure ', 'Bless thee '];
-    const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
-    return chance.pickone(start) + name + chance.pickone(exception) + quote;
+  shadeResponse = (shadeWord) => {
+    const shadeQuotes = [`Mine ${shadeWord}? Nay they are legend!`, `My brilliance requires such ${shadeWord}!`, `These ${shadeWord} are needed for obscuring your visage.`, `To spit fire like this you need ${shadeWord} like these.`, `Shadespeare requires ${shadeWord}.` ]
+    return chance.pickone(shadeQuotes)
   }
   getName = (text) => {
     if(!text) return
@@ -122,17 +114,23 @@ export default class Home extends Component {
     const firstLetter = name[0].toUpperCase();
     return firstLetter + name.slice(1);
   }
-  lameResponse = async(word) => {
+  nameResponse = async(name) => {
     const quote = await getQuote()
-    const start = ['No thine is ', 'Thee call me ', 'How dare thee say ', 'Ha! ']
+    const start = ['Nice to meeteth thee ', 'The pleasure is mine ', 'What a pleasure ', 'Bless thee '];
     const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
-    return chance.pickone(start) + word + chance.pickone(exception) + quote;
+    return chance.pickone(start) + name + chance.pickone(exception) + quote;
   }
   getLame = (text) => {
     if(!text) return
     const lameMatchRegex = text.match(/(\blame\b|not smart|not very smart|poopface|stupid|not clever|\bbad\b|whack|lousy|not intelligent|pathetic|weak|sucks|suck|dumb)/i)
     if(!lameMatchRegex) return
     return lameMatchRegex[1]
+  }
+  lameResponse = async(word) => {
+    const quote = await getQuote()
+    const start = ['No thine is ', 'Thee call me ', 'How dare thee say ', 'Ha! ']
+    const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
+    return chance.pickone(start) + word + chance.pickone(exception) + quote;
   }
   getGoodbye = (text) => {
     if(!text) return
@@ -178,14 +176,15 @@ export default class Home extends Component {
     const playsResponses = ['Ah, not my best work.', 'Twas not me ;)','Yes, yes, I knoweth I am good.', 'Thy should see what I am crafting now.', 'Only a hint of my true power.']
     return chance.pickone(playsResponses)
   }
+
   prompt = () => {
     const counter = this.state.promptCounter
-    if (counter === 0) return 'Click not yond scroll!';
+    if(counter === 0) return 'Click not yond scroll!';
     if(counter === 1) return '...I hath tried to warneth thee. Might as well introduce thyself.';
     if(counter === 2) return 'Thy could comment on his shades.';
     if(counter === 3) return 'Thy could mention his works.';
     if(counter === 4) return 'Thy could request a sick burn.';
-    if(counter === 5) return 'Thou could ask about his origins.';
+    if(counter === 5) return 'Thou could ask about who created him.';
     if(counter === 6) return 'Seems thou art getting the hang of this.'
     return 'Thou art on thine own now...'
     
@@ -194,19 +193,15 @@ export default class Home extends Component {
     const opacity = this.state.warningBool ? {display: 'none'} : {display: 'inline-block'}
     return (
       <div className="home-page">
-
       <div className="shadeField">
         <img style={opacity} className="shade" src="shades.png" alt="shadeTop" />
-
         {this.state.warningBool ? <img className="shadespeare" src="shadespeare.png" alt="shadespeare" /> :
         <h2 className="response">{this.state.response}
         <div className="fadingEffect" />
         </h2>}
-
         <img style={opacity} className="shade" src="shade-bottom.png" alt="bottom" />
       </div>
       
-
       <div className="buttonField">
       {this.state.warningBool 
         ? ( this.state.loadingBool 
@@ -217,11 +212,10 @@ export default class Home extends Component {
             {this.state.loadingBool 
             ? (<img className="smallLoading" src="feather.gif" alt="loading" />)
             : <button onClick={this.handleSubmit}><img className="scrollImage smallScroll"  src="scroll&pen.png" alt="the submit button" /> </button>}
-        </form>)
+          </form>)
       }
-        <p><em>{this.prompt()}</em></p>
+      <p><em>{this.prompt()}</em></p>
       </div>
-        
       <Link className="aboutUs" to='/about-us'>About the Authors</Link>
       <Link className="aboutProject" to='/about-project'>About Shadespeare</Link>
       </div>

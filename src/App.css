@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
 }
-
 .home-page {
   height: 100vh;
   background-color: wheat;
@@ -14,11 +13,9 @@
   font-family: 'Merienda', cursive;
 }
 .shade {
-  /* width: 350px; */
   height: 25vh;
 }
 .shadespeare {
-  /* width: 350px; */
   height: 50vh;
 }
 .shadeField {
@@ -60,7 +57,6 @@
   width: 75px;
   position: relative;
   top: 20px
-
 }
 .aboutUs {
   position: absolute;
@@ -80,7 +76,6 @@
 .aboutProject:hover{
   text-decoration: underline;
 }
-
 .loadingGif {
   width: 100px;
   z-index: 2;
@@ -93,23 +88,15 @@
   position: relative;
   top: 15px
 }
-
-
-
 .response {
   position:relative;
   line-height:2em;
-
   overflow: hidden;
-
     font-size: 1.3em;
-    /* height: 50px; */
-
     margin-bottom: 0px;
     margin-top: -6px;
     padding: 0px 5px 0px 5px;
     border: 3px dashed red;
-  
 }
 .fadingEffect {
   position:absolute;
