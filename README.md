@@ -8,7 +8,7 @@ This project was made in good fun, we absolutly do not condone bullying or haras
 
 https://shadespeare-insults.herokuapp.com/
 
-For a full list of technologies see our back end git:
+For a full list of technologies see our back end git: 
 https://github.com/Shakespeare-Insult-Bot/shadespeare-back-end
 
 
@@ -19,7 +19,7 @@ https://github.com/Shakespeare-Insult-Bot/shadespeare-back-end
 []death day (I'm not dead)
 []how are you/hows your day
 []youre not real<!-- youre not real, im right here -->
-[]Response check for alchemy(finest dev in the land)/monty[]python(lowest level of british comedy)/
+[]Response check for alchemy(finest dev in the land)/montypython(lowest level of british comedy)/
 []if they comeback(goodbye)
 []catch about mother/your mom
 []catch for test*

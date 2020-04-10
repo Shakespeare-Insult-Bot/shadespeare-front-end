@@ -87,20 +87,16 @@ export default class Home extends Component {
     const rebuttal = ['Is thy quill dry? ', 'Are thine fingers broken? ', 'Ist thou mute? ', quote]
     return chance.pickone(rebuttal)
   }
-  helloResponse = (helloWord) => {
-    const greeting = [' to you as well.', ' indeed...', ' back at thee!']
-    const firstLetter = helloWord[0].toUpperCase();
-    return firstLetter + helloWord.slice(1) + chance.pickone(greeting)
-  }
   getHello = (text) => {
-    if(!text) return
+  if(!text) return
     const helloMatchRegex = text.match(/(hello|\bhi\b|wassup|\bsup\b|good morning|good day|morning|good evening|\byo\b|\bhey\b|good morrow)/i)
     if(!helloMatchRegex) return
     return helloMatchRegex[1]
   }
-  shadeResponse = (shadeWord) => {
-    const shadeQuotes = [`Mine ${shadeWord}? Nay they are legend!`, `My brilliance requires such ${shadeWord}!`, `These ${shadeWord} are needed for obscuring your visage.`, `To spit fire like this you need ${shadeWord} like these.`, `Shadespeare requires ${shadeWord}.` ]
-    return chance.pickone(shadeQuotes)
+  helloResponse = (helloWord) => {
+    const greeting = [' to you as well.', ' indeed...', ' back at thee!']
+    const firstLetter = helloWord[0].toUpperCase();
+    return firstLetter + helloWord.slice(1) + chance.pickone(greeting)
   }
   getShade = (text) => {
     if(!text) return
@@ -108,11 +104,9 @@ export default class Home extends Component {
     if(!shadeMatchRegex) return
     return shadeMatchRegex[1]
   }
-  nameResponse = async(name) => {
-    const quote = await getQuote()
-    const start = ['Nice to meeteth thee ', 'The pleasure is mine ', 'What a pleasure ', 'Bless thee '];
-    const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
-    return chance.pickone(start) + name + chance.pickone(exception) + quote;
+  shadeResponse = (shadeWord) => {
+    const shadeQuotes = [`Mine ${shadeWord}? Nay they are legend!`, `My brilliance requires such ${shadeWord}!`, `These ${shadeWord} are needed for obscuring your visage.`, `To spit fire like this you need ${shadeWord} like these.`, `Shadespeare requires ${shadeWord}.` ]
+    return chance.pickone(shadeQuotes)
   }
   getName = (text) => {
     if(!text) return
@@ -122,17 +116,23 @@ export default class Home extends Component {
     const firstLetter = name[0].toUpperCase();
     return firstLetter + name.slice(1);
   }
-  lameResponse = async(word) => {
+  nameResponse = async(name) => {
     const quote = await getQuote()
-    const start = ['No thine is ', 'Thee call me ', 'How dare thee say ', 'Ha! ']
+    const start = ['Nice to meeteth thee ', 'The pleasure is mine ', 'What a pleasure ', 'Bless thee '];
     const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
-    return chance.pickone(start) + word + chance.pickone(exception) + quote;
+    return chance.pickone(start) + name + chance.pickone(exception) + quote;
   }
   getLame = (text) => {
     if(!text) return
     const lameMatchRegex = text.match(/(\blame\b|not smart|not very smart|poopface|stupid|not clever|\bbad\b|whack|lousy|not intelligent|pathetic|weak|sucks|suck|dumb)/i)
     if(!lameMatchRegex) return
     return lameMatchRegex[1]
+  }
+  lameResponse = async(word) => {
+    const quote = await getQuote()
+    const start = ['No thine is ', 'Thee call me ', 'How dare thee say ', 'Ha! ']
+    const exception = ['. Nonetheless, ', '. However, ', ', but ', '. Regardless ', ', yet ', ', even so '];
+    return chance.pickone(start) + word + chance.pickone(exception) + quote;
   }
   getGoodbye = (text) => {
     if(!text) return
