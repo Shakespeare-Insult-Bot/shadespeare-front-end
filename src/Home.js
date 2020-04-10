@@ -48,12 +48,16 @@ export default class Home extends Component {
       const helloWord = this.getHello(text)
       const byeWord = this.getGoodbye(text)
       const makerWord = this.getMaker(text)
+      const roastWord = this.getRoast(text)
+      const playsWord = this.getPlays(text)
       
       let response
       if (helloWord) response = await this.helloResponse(helloWord)
       if (lameWord) response = await this.lameResponse(lameWord)
       if (shadeWord) response = await this.shadeResponse(shadeWord)
       if (makerWord) response = await this.makerResponse(makerWord)
+      if (roastWord) response = await this.roastResponse(roastWord)
+      if (playsWord) response = await this.playsResponse(playsWord)
       if (name && this.state.nameBool) {
         response = await this.nameResponse(name) 
         this.setState({nameBool: false})
@@ -144,23 +148,47 @@ export default class Home extends Component {
   }
   getMaker = (text) => {
     if(!text) return
-    const makerMatchRegex = text.match(/(creators|creator|who made you|makers|maker|devs|developers|inventors|inventor)/i)
+    const makerMatchRegex = text.match(/(creators|creator|who made you|makers|maker|devs|developers|inventors|inventor|origins|origin|who created you|who developed you)/i)
     if(!makerMatchRegex) return
     return makerMatchRegex[1]
   }
   makerResponse = async(word) => {
-    const makerResponses = ['Why the masters of the universe of course. ', 'The gods bestowed life upon me. ', 'Don\'t thee know? World renown authors. ']
+    const makerResponses = ['Why the masters of the universe of course. ', 'The gods bestowed life upon me. ', 'Don\'t thee know? World renown authors. ','Thine lords and lady of Alchemy. ']
     return chance.pickone(makerResponses) + 'Clicketh the link down beloweth and to thine left.'
+  }
+  getRoast = (text) => {
+    if(!text) return
+    const roastMatchRegex = text.match(/(roast me|roast|hit me|punchline|shoot|insult|try your best|nice burn|sick burn|burn)/i)
+    if(!roastMatchRegex) return
+    return roastMatchRegex[1]
+  }
+  roastResponse = async(word) => {
+    const quote = await getQuote()
+    const roastResponse = [' you say, ','? So I shall, ','? Try and handle my shade, ']
+    const firstLetter = word[0].toUpperCase();
+    return firstLetter + word.slice(1) + chance.pickone(roastResponse) + quote
+  }
+  getPlays = (text) => {
+    if (!text) return
+    const playsMatchRegex = text.match(/(plays|play|romeo|juliet|hamlet|macbeth|othello|cleopatra|caesor|henry|mercutio|writing|works|work|midsummer|much ado|merchant|twelth|verona)/i)
+    if(!playsMatchRegex) return
+    return playsMatchRegex[1]
+  }
+  playsResponse = async(word) => {
+    const playsResponses = ['Ah, not my best work.', 'Twas not me ;)','Yes, yes, I knoweth I am good.', 'Thy should see what I am crafting now.', 'Only a hint of my true power.']
+    return chance.pickone(playsResponses)
   }
   prompt = () => {
     const counter = this.state.promptCounter
     if (counter === 0) return 'Click not yond scroll!';
     if(counter === 1) return '...I hath tried to warneth thee. Might as well introduce thyself.';
-    if(counter === 2) return 'Thy could comment on his shades or whatever.';
-    if(counter === 3) return 'Wast he even that great a writer?';
-    //a few more promts
-    if(counter === 4) return 'Seems thou art getting the hang of this.'
+    if(counter === 2) return 'Thy could comment on his shades.';
+    if(counter === 3) return 'Thy could mention his works.';
+    if(counter === 4) return 'Thy could request a sick burn.';
+    if(counter === 5) return 'Thou could ask about his origins.';
+    if(counter === 6) return 'Seems thou art getting the hang of this.'
     return 'Thou art on thine own now...'
+    
   }
   render() {
     const opacity = this.state.warningBool ? {display: 'none'} : {display: 'inline-block'}
