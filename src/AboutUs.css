@@ -26,7 +26,6 @@ ul {
     text-align: center;
     justify-content: space-evenly;
 }
-
 .home {
     position: fixed;
     bottom: 15px;
@@ -54,20 +53,6 @@ ul {
     text-align: center;
     color: rgb(206, 175, 3);
 }
-        /* .our-names {
-            position: fixed;
-            top: 600px;
-            text-align: center;
-            justify-content: center;
-        } */
-/* .text-bg {
-    justify-content: center;
-    margin-top: 25px;
-    height:25vh;
-    max-width: 30vh;
-    z-index: -1;
-    
-} */
 .card-div {
     height: 45vh;
     max-width: 20vw;
@@ -78,22 +63,11 @@ ul {
     align-items: center;
     margin-bottom: 35px;
 }
-.scott {
-    height: 45vh;
-    max-width: 20vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-   
-    
-}
 .social-icon {
     color: rgb(206, 175, 3);
     margin: 6px;
     font-size: 27px;
 }
-
 .wallpaper {
     position: fixed;
     z-index: -1;
@@ -101,14 +75,12 @@ ul {
     min-height: 100vh;
 
 }
-
 .title {
     position: absolute;
     top: 5vh;
     font-size: xxx-large;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.527);
 }
-
 .project-links {
     position: absolute;
     bottom: 100px;

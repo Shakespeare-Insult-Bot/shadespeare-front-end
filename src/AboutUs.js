@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
-
 import './AboutUs.css';
 
 export default class AboutUs extends Component {
@@ -14,11 +13,8 @@ export default class AboutUs extends Component {
                 <div className='card-div'>
                     <img src="https://i.imgur.com/hAIRYe1.png" alt="card background"  className="card-img"></img>
                     <div>
-                        
                         <h2 className='our-names'>Fiona Ochs</h2>
                         <p>"Thine be a hamster and lack gall." <em>-Shadespeare</em></p>
-                        
-                        
                         <div className='our-links'>
                             <a href="https://www.linkedin.com/in/fionaochs/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
                             <a href="https://github.com/fionaochs" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
@@ -43,7 +39,6 @@ export default class AboutUs extends Component {
                         <div>
                             <h2 className='our-names'>Cody Brown</h2>
                             <p>"You Bastard" <em>-Shadespeare</em></p>
-                    
                             <div className='our-links'>
                                 <a href="https://www.linkedin.com/in/codylylebrown/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
                                 <a href="https://github.com/cody2934" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
@@ -51,13 +46,11 @@ export default class AboutUs extends Component {
                         </div>
                     </div>
 
-                      
                     <div className='card-div'>
                         <img src="https://i.imgur.com/R0wRlu4.png" alt="card background" className="card-img"></img>
                         <div>
                             <h2 className='our-names'>James Eserjose</h2>
                             <p>"As much pleasure, just so much joy, when thee leave the room." <em>-Shadespeare</em></p>
-                        
                             <div className='our-links'>
                                 <a href="https://www.linkedin.com/in/jamesreserjose/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
                                 <a href="https://github.com/ezjim" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
@@ -67,8 +60,6 @@ export default class AboutUs extends Component {
                     <Link className="home" to='/'>Back to home</Link>
                     <Link className="about-Project" to='/about-project'>About Shadespeare</Link>
                 </div>
-                
-                
                 )
             }
         }
