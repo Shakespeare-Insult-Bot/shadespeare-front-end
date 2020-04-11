@@ -3,63 +3,51 @@ import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
 import './AboutUs.css';
 
+// create components to prevent code duplication
+const Developer = ({ name, quote, github, linkedIn }) => (
+  <div className='card-div'>
+    <img src="https://i.imgur.com/hAIRYe1.png" alt="card background"  className="card-img"></img>
+    <div>
+      <h2 className='our-names'>{name}</h2>
+      <p>"{quote}" <em>-Shadespeare</em></p>
+      <div className='our-links'>
+        <a href={`https://www.linkedin.com/in/${linkedIn}/`} target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
+        <a href={`https://github.com/${github}`} target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
+      </div>
+    </div>
+  </div>
+)
+
 export default class AboutUs extends Component {
-    render() {
-        return (
-            <div className="aboutus">
-                <img src="wallpaper.jpg" className='wallpaper' alt='wallpaper'></img>
-                <h1 className='title'>Shadespeare, Bard of Insults</h1>
+  render() {
+    return (
+      <div className="aboutus">
+        <img src="wallpaper.jpg" className='wallpaper' alt='wallpaper'></img>
+        <h1 className='title'>Shadespeare, Bard of Insults</h1>
+        <Developer
+          name="Fiona Ochs"
+          quote="Thine be a hamster and lack gall."
+          github="fionaochs"
+          linkedIn="fionaochs" />
+        
+        <Developer
+          name="Scott Harlan"
+          quote="Well, every one can master a piece of trash like you."
+          github="SeHarlan"
+          linkedIn="scottharlan-pnw" />
 
-                <div className='card-div'>
-                    <img src="https://i.imgur.com/hAIRYe1.png" alt="card background"  className="card-img"></img>
-                    <div>
-                        <h2 className='our-names'>Fiona Ochs</h2>
-                        <p>"Thine be a hamster and lack gall." <em>-Shadespeare</em></p>
-                        <div className='our-links'>
-                            <a href="https://www.linkedin.com/in/fionaochs/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
-                            <a href="https://github.com/fionaochs" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
-                        </div>
-                    </div>
-                </div>
+        <Developer
+          name="Cody Brown"
+          quote="You Bastard"
+          github="cody2934"
+          linkedIn="codylylebrown" />
 
-                <div className='card-div'>
-                    <img src="https://i.imgur.com/WlLReq6.png" alt="card background" className="card-img"></img>
-                    <div className="scott">
-                        <h2 className='our-names'>Scott Harlan</h2>
-                        <p>"Well, every one can master a piece of trash like you." <em>-Shadespeare</em></p>
-                        <div className='our-links'>
-                            <a href="https://www.linkedin.com/in/scottharlan-pnw/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
-                            <a href="https://github.com/SeHarlan" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div className='card-div'>
-                        <img src="https://i.imgur.com/KmTHuQH.png" alt="card background" className="card-img"></img>
-                        <div>
-                            <h2 className='our-names'>Cody Brown</h2>
-                            <p>"You Bastard" <em>-Shadespeare</em></p>
-                            <div className='our-links'>
-                                <a href="https://www.linkedin.com/in/codylylebrown/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
-                                <a href="https://github.com/cody2934" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='card-div'>
-                        <img src="https://i.imgur.com/R0wRlu4.png" alt="card background" className="card-img"></img>
-                        <div>
-                            <h2 className='our-names'>James Eserjose</h2>
-                            <p>"As much pleasure, just so much joy, when thee leave the room." <em>-Shadespeare</em></p>
-                            <div className='our-links'>
-                                <a href="https://www.linkedin.com/in/jamesreserjose/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
-                                <a href="https://github.com/ezjim" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <Link className="home" to='/'>Back to home</Link>
-                    <Link className="about-Project" to='/about-project'>About Shadespeare</Link>
-                </div>
-                )
-            }
-        }
+        <Developer
+          name="James Eserjose"
+          quote="As much pleasure, just so much joy, when thee leave the room."
+          github="ezjim"
+          linkedIn="jamesreserjose" />
+      </div>
+    )
+  }
+}
