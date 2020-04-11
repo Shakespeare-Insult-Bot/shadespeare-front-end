@@ -27,10 +27,6 @@ export default class AboutProject extends Component {
         <div className="project-links">
           <a href='https://github.com/Shakespeare-Insult-Bot' target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
         </div>
-        <div>
-          <Link className="about-Us" to='/about-us'>About the Authors</Link>
-          <Link className="home" to='/'>Back to home</Link>
-        </div>   
       </div>
     )
   }

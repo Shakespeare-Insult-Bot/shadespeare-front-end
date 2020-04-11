@@ -6,6 +6,7 @@ import Home from './Home.js'
 import AboutUs from './AboutUs.js'
 import AboutProject from './AboutProject.js'
 import './App.css'
+import Footer from './Footer.js';
 
 
 export default class App extends Component {
@@ -17,6 +18,7 @@ export default class App extends Component {
           <Route exact path ='/about-us' component={AboutUs}/>
           <Route exact path = '/about-project' component={AboutProject} />
         </div>
+        <Footer />
       </Router>
     )
   }
